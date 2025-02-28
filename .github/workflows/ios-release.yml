@@ -46,16 +46,16 @@ jobs:
           
           KEYCHAIN_PASSWORD: 111111
         run: |
-          xcodebuild -workspace ios/AIRun.xcworkspace \
+          xcodebuild -workspace AIRun/AIRun.xcworkspace \
             -scheme AIRun \
             -configuration Release \
-            -archivePath build/ios/archive/AIRun.xcarchive \
+            -archivePath build/AIRun/archive/AIRun.xcarchive \
             clean archive
           
           xcodebuild -exportArchive \
-            -archivePath build/ios/archive/AIRun.xcarchive \
-            -exportOptionsPlist ios/ExportOptions.plist \
-            -exportPath build/ios/ipa
+            -archivePath build/AIRun/archive/AIRun.xcarchive \
+            -exportOptionsPlist AIRun/ExportOptions.plist \
+            -exportPath build/AIRun/ipa
             
         
 
@@ -63,11 +63,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-ipa
-          path: build/ios/ipa
+          path: build/AIRun/ipa
 
       - name: Upload to App Store using altool
         env:
-          IPA_PATH: "build/ios/ipa/ai_oversea.ipa"
+          IPA_PATH: "build/AIRun/ipa/ai_oversea.ipa"
           APPLE_ID: "pjmmh6jbh@hotmail.com"
           APP_SPECIFIC_PASSWORD: "jjpl-sliy-dcxy-kgus"
         run: |
