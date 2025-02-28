@@ -1,0 +1,6 @@
+framework module Pods_AIRun {
+  umbrella header "Pods-AIRun-umbrella.h"
+
+  export *
+  module * { export * }
+}
